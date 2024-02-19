@@ -18,7 +18,7 @@
     '1'
 
 ## Re syntax
- - Repetitions with star *
+### Repetitions with star *
 
     >>> re.search(r'ettttttt', "Now is bettttttter than never.")
     <re.Match object; span=(8, 16), match='ettttttt'>
@@ -26,8 +26,8 @@
     <re.Match object; span=(8, 16), match='ettttttt'>
     >>> re.search(r'et*', "Now is beer than never.")
     <re.Match object; span=(8, 9), match='e'>
-
- - Repetitions with plus +
+    
+### Repetitions with plus +
 
     >>> re.search(r't+', "Now is better than never.")
     <re.Match object; span=(9, 11), match='tt'>
@@ -35,6 +35,14 @@
 findall() method is used to search for “all” occurrences that match a given pattern. 
 In contrast, search() module will only return the first occurrence that matches the specified pattern.
 
+## Groups
+
+    >>> re.search('(py|sh|txt)', 'mynotes.txt')
+    <re.Match object; span=(8, 11), match='txt'>
+    >>> re.search('(py|sh|txt)', 'mynotes.py')
+    <re.Match object; span=(8, 10), match='py'>
+    >>> re.search('(py|sh|txt)', 'mynotes.sh')
+    <re.Match object; span=(8, 10), match='sh'>
 
 ## re.search
 
@@ -69,16 +77,15 @@ Between two characters in the string, where one is a word character and the othe
 
 # Flags/Inline flags
 
-
     >>> re.search(r'now', "Now is better than never.")
 
-- (?aiLmsux)
-
-    (One or more letters from the set 'a', 'i', 'L', 'm', 's', 'u', 'x'.) The group matches the empty string; the letters set the corresponding flags for the entire regular expression
+## Special syntax 
+(?aiLmsux) (One or more letters from the set 'a', 'i', 'L', 'm', 's', 'u', 'x'.) The group matches the empty string; the letters set the corresponding flags for the entire regular expression
 
     >>> re.search(r'(?i)now', "Now is better than never.")
     <re.Match object; span=(0, 3), match='Now'>
 
-- re.I (ignore case)
+## Flags re.I (ignore case)
+
     >>> re.search(r'now', "Now is better than never.", re.I)
     <re.Match object; span=(0, 3), match='Now'>
